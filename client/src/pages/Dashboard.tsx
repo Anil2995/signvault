@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-    FileText, Upload, Clock, CheckCircle2, Plus, Search, Loader2,
+    FileText, Upload, Plus, Search, Loader2,
     BarChart3, MoreVertical, Download, Eye, Trash2, X
 } from 'lucide-react';
 import api from '../lib/axios';
@@ -81,13 +81,6 @@ const Dashboard = () => {
         } catch {
             toast('error', 'Delete failed');
         }
-    };
-
-    const handleDrop = (e: React.DragEvent) => {
-        e.preventDefault();
-        setDragOver(false);
-        const file = e.dataTransfer.files[0];
-        if (file) handleUpload(file);
     };
 
     const filteredDocs = documents.filter(d =>

@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FileText, Upload, Plus, Search, Loader2, MoreVertical, Download, Eye, Trash2, X, Grid, List } from 'lucide-react';
+import { FileText, Upload, Plus, Search, Loader2, MoreVertical, Eye, Trash2, X, Grid, List } from 'lucide-react';
 import api from '../lib/axios';
 import { useToast } from '../components/Toast';
 import Layout from '../components/Layout';

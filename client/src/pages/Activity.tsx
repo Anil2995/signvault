@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Clock, FileText, PenTool, CheckCircle2, Upload, AlertCircle } from 'lucide-react';
+import { Clock, FileText, PenTool, CheckCircle2, Upload } from 'lucide-react';
 import api from '../lib/axios';
 import Layout from '../components/Layout';
 import type { Document } from '../types';
