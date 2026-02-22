@@ -13,10 +13,24 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cors({
-    origin: process.env.CLIENT_URL || '*',
-    credentials: true
+    origin: function (origin, callback) {
+        const allowedOrigins = [
+            process.env.CLIENT_URL,
+            'http://localhost:5173',
+            'http://localhost:3000',
+        ].filter(Boolean);
+        // Allow requests with no origin (mobile apps, curl, etc)
+        // or if origin matches allowed list or is a Vercel preview URL
+        if (!origin || allowedOrigins.includes(origin) || /\.vercel\.app$/.test(origin)) {
+            callback(null, true);
+        } else {
+            callback(null, true); // Allow all for now, tighten in production if needed
+        }
+    },
+    credentials: true,
 }));
 app.use(helmet());
 app.use(morgan('dev'));
